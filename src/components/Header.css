@@ -1,0 +1,20 @@
+.Header {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  background-color: #282c34;
+}
+
+.Header img {
+  height: 100px;
+  margin: -20px 0;
+  padding: 0 20px;
+}
+
+.Header h {
+  color: azure;
+  font-size: 30px;
+  font-weight: 400;
+  margin-top: 10px;
+}

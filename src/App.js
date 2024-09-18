@@ -1,13 +1,12 @@
 import './App.css';
+import Header from './components/Header'
+import BatterySolution from './pages/BatterySolution';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          UPS SOLUTION
-        </p>
-      </header>
+      <Header />
+      <BatterySolution />
     </div>
   );
 }
