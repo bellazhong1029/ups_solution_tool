@@ -1,16 +1,17 @@
 import * as React from 'react';
 import './BatterySolution.css'
 
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 
 function BatterySolution(){
     const [upsModel, setUpsModel] = React.useState('');
     const [backupTime, setBackupTime] = React.useState(5);
     const [temperature, setTemperature] = React.useState(20);
-    const [battery, setBattery] = React.useState('')
+    const [battery, setBattery] = React.useState('');
+    const [upsLoad, setUpsLoad] = React.useState(20);
 
     // TODO: Compelete ups model list
     const upsModels = ['DPH G2 200', 'DPH120', 'DPH150', 'DPH200', 'DPH300', 'DPH500','DPH600', 'DPH75', 'DPH80', 'DPS300'];
@@ -31,7 +32,9 @@ function BatterySolution(){
     const handleChange_batteryType = (event) => {
       setBattery(event.target.value);
     };
-
+    const handleChange_upsLoad = (event) => {
+      setUpsLoad(event.target.value)
+    }
 
     return (
       <div className='BatterySolution'>
@@ -99,7 +102,14 @@ function BatterySolution(){
             <div className='BatterySolution-calc-header'>
               <h>Battery Calculation</h>
             </div>
-          
+            <div className='BatterySolution-calc-params'>
+              <div className='BatterySolution-param'>
+                <TextField id="outlined-basic" label='UPS Load (kVA)' variant="outlined" size='small' value={upsLoad} onChange={handleChange_upsLoad}/>
+              </div>
+              {/* TODO: Add calculatoin formulas */}
+              <p className='BatterySolution-calc-param'> DC Efficieny: 93% </p>
+              <p className='BatterySolution-calc-param'> Load Percentage: 80% </p>
+            </div>
           </div>
       </div>
     )

@@ -24,21 +24,41 @@
 .BatterySolution-selectItem p {
   margin-top: 7px;
 }
-.BatterySolution-selectItem .title {
-  margin-right: 5px;
-  font-weight: 500;
-}
-.BatterySolution-selectItem .unit {
-  margin-left: 5px;
-  font-weight: 500;
-}
 
 
 .BatterySolution-calc {
   background-color: #f5f5f5;
-  padding: 30px 10px;
+  padding: 10px 10px;
 }
 .BatterySolution-calc-header{
   font-size: 20px;
   font-weight: 600;
+  margin: 20px 10px;
+}
+.BatterySolution-calc-params{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-auto-rows: auto;
+  grid-auto-flow: dense;
+  gap: 10px;
+}
+.BatterySolution-calc-param{
+  display: flex;
+  flex-direction: row;
+  padding-left: 45px;
+}
+.BatterySolution-calc-params p {
+  font-weight: 500;
+  margin: 7px 0;
+}
+
+
+/* Shared styles */
+.title {
+  margin-right: 5px;
+  font-weight: 500;
+}
+.unit {
+  margin-left: 5px;
+  font-weight: 500;
 }
