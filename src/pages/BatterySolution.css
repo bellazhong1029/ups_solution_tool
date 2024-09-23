@@ -8,12 +8,14 @@
 
 
 .BatterySolution-select {
-  background-color: #d3d3d3;
+  position: relative;
+  background-color: #dcdcdc;
   padding: 30px 10px;
   text-align: left;
 }
+
 .BatterySolution-select-header{
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 600;
 }
 .BatterySolution-selectItem {
@@ -31,7 +33,7 @@
   padding: 10px 10px;
 }
 .BatterySolution-calc-header{
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 600;
   margin: 20px 10px;
 }
@@ -50,6 +52,16 @@
 .BatterySolution-calc-params p {
   font-weight: 500;
   margin: 7px 0;
+}
+
+
+.BatterySolution-result{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 310px);
+  grid-auto-rows: auto; /* Rows adjust automatically */
+  grid-auto-flow: dense; /* Fill each row from left to right */
+  gap: 20px; /* Optional spacing between blocks */
+  margin: 20px 45px;
 }
 
 

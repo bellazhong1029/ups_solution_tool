@@ -1,10 +1,8 @@
 import * as React from 'react';
 import './BatterySolution.css'
+import BatterySolutionBlock from '../components/BatterySolutionBlock';
 
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import TextField from '@mui/material/TextField';
+import { FormControl, MenuItem, Select, TextField } from '@mui/material';
 
 function BatterySolution(){
     const [upsModel, setUpsModel] = React.useState('');
@@ -13,12 +11,12 @@ function BatterySolution(){
     const [battery, setBattery] = React.useState('');
     const [upsLoad, setUpsLoad] = React.useState(20);
 
-    // TODO: Compelete ups model list
+    // TODO: Complete ups model list
     const upsModels = ['DPH G2 200', 'DPH120', 'DPH150', 'DPH200', 'DPH300', 'DPH500','DPH600', 'DPH75', 'DPH80', 'DPS300'];
     const backupTimes = [5, 10, 15, 20, 30, 45, 60]
     const temperatures = [20, 25]
-    // TODO: Compelete battery model list
-    const batteryTypes = ['24-65 Ah', '70-105 Ah', '120-200 Ah', 'Exide','Monbat', 'Leoch', 'Yuasa','CSB Hitachi']
+    // TODO: Complete battery model list
+    const batteryCategory = ['24-65 Ah', '70-105 Ah', '120-200 Ah', 'Exide','Monbat', 'Leoch', 'Yuasa','CSB Hitachi']
 
     const handleChange_UpsModel = (event) => {
         setUpsModel(event.target.value);
@@ -90,7 +88,7 @@ function BatterySolution(){
                   value={battery}
                   onChange={handleChange_batteryType}
                 >
-                  {batteryTypes.map((type, index) => (
+                  {batteryCategory.map((type, index) => (
                     <MenuItem value={type}>{type}</MenuItem>
                   ))}
                 </Select>
@@ -109,6 +107,13 @@ function BatterySolution(){
               {/* TODO: Add calculatoin formulas */}
               <p className='BatterySolution-calc-param'> DC Efficieny: 93% </p>
               <p className='BatterySolution-calc-param'> Load Percentage: 80% </p>
+            </div>
+            <div className='BatterySolution-result'>
+              <BatterySolutionBlock/>
+              <BatterySolutionBlock/>
+              <BatterySolutionBlock/>
+              <BatterySolutionBlock/>
+              <BatterySolutionBlock/>
             </div>
           </div>
       </div>

@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: start;
   justify-content: space-between;
-  background-color: #282c34;
+  background-color: #001F3F;
 }
 
 .Header img {
@@ -13,7 +13,7 @@
 }
 
 .Header h {
-  color: azure;
+  color: #fff;
   font-size: 30px;
   font-weight: 400;
   margin-top: 10px;
