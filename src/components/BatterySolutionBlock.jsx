@@ -1,17 +1,68 @@
 import * as React from 'react';
-import './BatterySolutionBlock.css'
+import './BatterySolutionBlock.css';
 
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
-function BatterySolutionBlock(){
-    const [batteryType, setBatteryType] = React.useState('24-65 Ah');
-    const BatteryStringNumber = [32,33,34,35,36,38,39]
-    const batteryTypes = ['24-65 Ah', '70-105 Ah', '120-200 Ah', 'Exide','Monbat', 'Leoch', 'Yuasa','CSB Hitachi']
+function BatterySolutionBlock({selectedBatteryId, upsLoad, dcEfficiency, temperature, backupTime, batteryData, selectedUpsData}){
+    const [batteryModel, setBatteryModel] =React.useState('');
+    const [selectedBatteryData, setSelectedBatteryData] = React.useState('');
+    const [discharge, setDischarge] = React.useState('');
 
-    const handleChange_batteryType = (event) => {
-        setBatteryType(event.target.value);
+    // Initial rendering for battery solution data
+    React.useEffect(() => {
+        let battery = batteryData.filter(battery => battery.id === selectedBatteryId);
+
+        setSelectedBatteryData(battery[0]);
+        setBatteryModel(battery[0].model)
+        lookupDischarge(battery)
+    }, [selectedBatteryId])
+
+    function lookupDischarge(battery){
+        let discharge = 0;
+        if(temperature === 20){
+            if(backupTime === 5){discharge = battery[0].dischargeAt20[0];}
+            if(backupTime === 10){discharge = battery[0].dischargeAt20[1];}
+            if(backupTime === 15){discharge = battery[0].dischargeAt20[2];}
+            if(backupTime === 20){discharge = battery[0].dischargeAt20[3];}
+            if(backupTime === 30){discharge = battery[0].dischargeAt20[4];}
+            if(backupTime === 45){discharge = battery[0].dischargeAt20[5];}
+            if(backupTime === 60){discharge = battery[0].dischargeAt20[6];}
+        }else{
+            if(backupTime === 5){discharge = battery[0].dischargeAt25[0];}
+            if(backupTime === 10){discharge = battery[0].dischargeAt25[1];}
+            if(backupTime === 15){discharge = battery[0].dischargeAt25[2];}
+            if(backupTime === 20){discharge = battery[0].dischargeAt25[3];}
+            if(backupTime === 30){discharge = battery[0].dischargeAt25[4];}
+            if(backupTime === 45){discharge = battery[0].dischargeAt25[5];}
+            if(backupTime === 60){discharge = battery[0].dischargeAt25[6];}
+        }
+        setDischarge(discharge);
+    }
+
+    function calculateNumofStrings(blockNum){
+        const numofStrings = Math.ceil((parseInt(upsLoad, 10) / dcEfficiency * 1000 * 100)/ (blockNum * discharge));
+        return numofStrings;
+    }
+
+    function calculatePrice(blockNum){
+        const numofStrings = Math.ceil((parseInt(upsLoad, 10) / dcEfficiency * 1000 * 100)/ (blockNum * discharge));
+        const price = (numofStrings * blockNum * selectedBatteryData.price + numofStrings * 3000).toFixed(2); 
+        return price;
+    }
+
+    const handleChange_batteryModel = (event) => {
+        setBatteryModel(event.target.value);
     };
 
+    // Re-rendering when battery model changes 
+    React.useEffect(() => {
+        if (batteryModel){
+            let battery = batteryData.filter(battery => battery.model === batteryModel);
+            setSelectedBatteryData(battery[0]);
+            lookupDischarge(battery)
+        }
+    }, [batteryModel])
+    
     return (
         <div className='BatterySolutionBlock'>
             <div className='BatterySolutionBlock-top'>
@@ -21,22 +72,22 @@ function BatterySolutionBlock(){
                 <div className='BatterySolutionBlock-right'>
                     <div className='BatterySolutionBlock-row'>
                         <FormControl sx={{ width: 200 }} size='small'>
-                            <InputLabel id="demo-simple-select-label">Battery Type</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Battery</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
                                 label="Options"
-                                value={batteryType}
-                                onChange={handleChange_batteryType}
+                                value={batteryModel}
+                                onChange={handleChange_batteryModel}
                             >
-                                {batteryTypes.map((type, index) => (
-                                    <MenuItem value={type}>{type}</MenuItem>
+                                {batteryData.map((battery) => (
+                                    <MenuItem key={battery.id} value={battery.model}>{battery.model}</MenuItem>
                                 ))}
                             </Select>
                         </FormControl>
                     </div>
-                    <div className='BatterySolutionBlock-row'>Brand: <b style={{marginLeft: '3px'}}> Battery brand </b></div>
-                    <div className='BatterySolutionBlock-row'>Capacity: <b style={{marginLeft: '3px'}}> 10 Ah </b></div>
+                    <div className='BatterySolutionBlock-row'>Brand: <b style={{marginLeft: '3px'}}> {selectedBatteryData.brand} </b></div>
+                    <div className='BatterySolutionBlock-row'>Capacity: <b style={{marginLeft: '3px'}}> {selectedBatteryData.capacity} </b> Ah</div>
                     <div className='BatterySolutionBlock-row'>
                         <div style={{border:'1px solid #eee', padding:'2px 8px', marginRight: '18px'}}>Strings</div>
                         <div style={{border:'1px solid #eee', padding:'2px 8px'}}>Solution Price</div>
@@ -46,21 +97,25 @@ function BatterySolutionBlock(){
 
             <div className='BatterySolutionBlock-bottom'>
                 <div className='BatterySolutionBlock-left'>
-                    {BatteryStringNumber.map((stringNum, index) => (
-                        <div style={{backgroundColor: index % 2 === 0?'#dcdcdc':'#f5f5f5'}}>{stringNum}</div>
+                    {selectedUpsData.NumofBlocksinOneString.map((blockNum, index) => (
+                        <div style={{backgroundColor: index % 2 === 0?'#dcdcdc':'#f5f5f5'}}>{blockNum}</div>
                     ))}
                 </div>
                 <div className='BatterySolutionBlock-right'>
                     {/* Number of Strings */}
                     <div style={{width:'100%'}}>
-                        {BatteryStringNumber.map((stringNum, index) => (
-                            <div style={{backgroundColor: index % 2 === 0?'#dcdcdc':'#f5f5f5'}}>{stringNum}</div>
+                        {selectedUpsData.NumofBlocksinOneString.map((blockNum, index) => (
+                            <div style={{backgroundColor: index % 2 === 0?'#dcdcdc':'#f5f5f5'}}>
+                                {calculateNumofStrings(blockNum)}
+                            </div>
                         ))}
                     </div>
                     {/* Solution Price */}
                     <div style={{width:'100%'}}>
-                        {BatteryStringNumber.map((stringNum, index) => (
-                            <div style={{backgroundColor: index % 2 === 0?'#dcdcdc':'#f5f5f5'}}>{stringNum*12} €</div>
+                        {selectedUpsData.NumofBlocksinOneString.map((blockNum, index) => (
+                            <div style={{backgroundColor: index % 2 === 0?'#dcdcdc':'#f5f5f5'}}>
+                                {calculatePrice(blockNum)} €
+                            </div>
                         ))}
                     </div>
                 </div>

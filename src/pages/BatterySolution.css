@@ -48,8 +48,7 @@
   display: flex;
   flex-direction: row;
   padding-left: 45px;
-}
-.BatterySolution-calc-params p {
+  font-size: 18px;
   font-weight: 500;
   margin: 7px 0;
 }
@@ -62,6 +61,14 @@
   grid-auto-flow: dense; /* Fill each row from left to right */
   gap: 20px; /* Optional spacing between blocks */
   margin: 20px 45px;
+  border-top: 1.5px solid #dcdcdc;
+  padding-top: 20px;
+}
+
+.BatterySolution-loading{
+  padding: 100px 50px;
+  border-top: 1.5px solid #dcdcdc;
+  margin-top: 20px;
 }
 
 
