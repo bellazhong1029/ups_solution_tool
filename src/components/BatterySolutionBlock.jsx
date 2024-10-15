@@ -3,18 +3,32 @@ import './BatterySolutionBlock.css';
 
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
-function BatterySolutionBlock({selectedBatteryId, upsLoad, dcEfficiency, temperature, backupTime, batteryData, selectedUpsData}){
+function BatterySolutionBlock({
+    selectedBatteryId, 
+    upsLoad,
+    dcEfficiency,
+    temperature,
+    backupTime,
+    batteryData,
+    selectedUpsData,
+    resultBatterySolutions, 
+    setResultBatterySolutions
+}){
     const [batteryModel, setBatteryModel] =React.useState('');
     const [selectedBatteryData, setSelectedBatteryData] = React.useState('');
     const [discharge, setDischarge] = React.useState('');
+
+    const [optimalBlocks, setOptimalBlocks] = React.useState(0)
+    const [optimalStrings, setOptimalStrings] = React.useState(0)
+    const [optimalPrice, setOptimalPrice] = React.useState(0)
 
     // Initial rendering for battery solution data
     React.useEffect(() => {
         let battery = batteryData.filter(battery => battery.id === selectedBatteryId);
 
         setSelectedBatteryData(battery[0]);
-        setBatteryModel(battery[0].model)
-        lookupDischarge(battery)
+        setBatteryModel(battery[0].model);
+        lookupDischarge(battery);
     }, [selectedBatteryId])
 
     function lookupDischarge(battery){
@@ -47,6 +61,20 @@ function BatterySolutionBlock({selectedBatteryId, upsLoad, dcEfficiency, tempera
     function calculatePrice(blockNum){
         const numofStrings = Math.ceil((parseInt(upsLoad, 10) / dcEfficiency * 1000 * 100)/ (blockNum * discharge));
         const price = (numofStrings * blockNum * selectedBatteryData.price + numofStrings * 3000).toFixed(2); 
+
+        // Find the optimal solution of the battery type
+        if(optimalPrice === 0){
+            setOptimalPrice(price);
+            setOptimalStrings(numofStrings);
+            setOptimalBlocks(blockNum);
+        }else{
+            if(price < optimalPrice){
+                setOptimalPrice(price);
+                setOptimalStrings(numofStrings);
+                setOptimalBlocks(blockNum);
+            }
+        }
+
         return price;
     }
 
@@ -59,9 +87,26 @@ function BatterySolutionBlock({selectedBatteryId, upsLoad, dcEfficiency, tempera
         if (batteryModel){
             let battery = batteryData.filter(battery => battery.model === batteryModel);
             setSelectedBatteryData(battery[0]);
-            lookupDischarge(battery)
+            lookupDischarge(battery);
         }
     }, [batteryModel])
+
+    // Return the most optimal battery solution 
+    React.useEffect(() => {
+        if(batteryModel && optimalPrice && optimalBlocks && optimalStrings){
+            setResultBatterySolutions((prev) => 
+                [...prev,{
+                    pn: selectedBatteryData.PN,
+                    brand: selectedBatteryData.brand,
+                    image: selectedBatteryData.image,
+                    model: batteryModel,
+                    price: optimalPrice,
+                    blocks: optimalBlocks,
+                    strings: optimalStrings
+                }]
+            );
+        }
+    }, [optimalPrice])
     
     return (
         <div className='BatterySolutionBlock'>

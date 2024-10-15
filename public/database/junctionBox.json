@@ -1,0 +1,44 @@
+[
+    {
+        "id":3791641800,
+        "PN": "3791641800",
+        "model": "UPS_FFE",
+        "price": 394.95,
+        "maxStrings": 3,
+        "maxAmp": 250,
+        "description":"Junction box FFE no switch+fuses (up to 250A and 3BC).",
+        "size": "NH1"
+
+    },
+    {
+        "id":3799302701,
+        "PN": "3799302701",
+        "model": "UPS_NH2",
+        "price": 460.41,
+        "maxStrings": 8,
+        "maxAmp": 425,
+        "description":"Junction box UPS NH2 (up to 400A and 8BC).",
+        "size": "NH2"
+
+    },
+    {
+        "id":3799648600,
+        "PN": "3799648600",
+        "model": "UPS_NH3",
+        "price": 461.45,
+        "maxStrings": 8,
+        "maxAmp": 630,
+        "description":"Junction box UPS NH3 (up to 630A and 8BC).",
+        "size": "NH3"
+    },
+    {
+        "id":3798101490,
+        "PN": "3798101490",
+        "model": "UPS_3xNH3",
+        "price": 760,
+        "maxStrings": 8,
+        "maxAmp": 1890,
+        "description":"Junction box UPS 3xNH3 (up to 1890A and 8BC).",
+        "size": "NH3"
+    }
+]

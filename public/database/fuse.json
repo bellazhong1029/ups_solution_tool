@@ -1,0 +1,92 @@
+[
+    {
+        "id": 891529740,
+        "PN": "0891529740",
+        "model": "NH2_125",
+        "price": 25.90,
+        "maxAmp": 125,
+        "size": "NH2",
+        "count": 1,
+        "description": "FUSE gR P 125A 700VDC BLADE NH2."
+    },
+    {
+        "id": 891529840,
+        "PN": "0891529840",
+        "model": "NH2_160",
+        "price": 25.90,
+        "maxAmp": 160,
+        "size": "NH2",
+        "count": 1,
+        "description": "FUSE gR P 160A 700VDC BLADE NH2."
+    },
+    {
+        "id": 891529940,
+        "PN": "0891529940",
+        "model": "NH2_200",
+        "price": 25.90,
+        "maxAmp": 200,
+        "size": "NH2",
+        "count": 1,
+        "description": "FUSE gR P 200A 700VDC BLADE NH2."
+    },
+    {
+        "id": 890276340,
+        "PN": "0890276340",
+        "model": "NH2_250",
+        "price": 32.76,
+        "maxAmp": 250,
+        "size": "NH2",
+        "count": 1,
+        "description": "FUSE gR P 250A 700VDC BLADE NH2."
+    },
+    {
+        "id": 890276440,
+        "PN": "0890276440",
+        "model": "NH2_315",
+        "price": 32.76,
+        "maxAmp": 315,
+        "size": "NH2",
+        "count": 1,
+        "description": "FUSE gR P 315A 700VDC BLADE NH2."
+    },
+    {
+        "id": 890276540,
+        "PN": "0890276540",
+        "model": "NH2_350",
+        "price": 47.91,
+        "maxAmp": 350,
+        "size": "NH2",
+        "count": 1,
+        "description": "FUSE gR P 350A 700VDC BLADE NH2."
+    },
+    {
+        "id": 890276640,
+        "PN": "0890276640",
+        "model": "NH2_400",
+        "price": 45.52,
+        "maxAmp": 425,
+        "size": "NH2",
+        "count": 1,
+        "description": "FUSE gR P 400A 700VDC BLADE NH2."
+    },
+    {
+        "id": 890277240,
+        "PN": "0890277240",
+        "model": "NH3_500",
+        "price": 52.19,
+        "maxAmp": 500,
+        "size": "NH3",
+        "count": 1,
+        "description": "FUSE gR P 500A 700VDC BLADE NH3."
+    },
+    {
+        "id": 890277340,
+        "PN": "0890277340",
+        "model": "NH3_630",
+        "price": 52.19,
+        "maxAmp": 650,
+        "size": "NH3",
+        "count": 1,
+        "description": "FUSE gR P 630A 700VDC BLADE NH3."
+    }
+]

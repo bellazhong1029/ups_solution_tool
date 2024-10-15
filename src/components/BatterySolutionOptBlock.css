@@ -1,0 +1,22 @@
+.BatterySolutionOptBlock, 
+.BatterySolutionOptBlock-labels {
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+  text-align: center;
+}
+
+.BatterySolutionOptBlock-labels{
+  border-bottom: 1px solid #000000;
+}
+
+.BatterySolutionOptBlock-row {
+  width: 95px;
+  padding: auto 5px;
+}
+
+.BatterySolutionOptBlock:first-child {
+  /* Styles for the first item */
+  background-color: #f1ef69;
+
+}

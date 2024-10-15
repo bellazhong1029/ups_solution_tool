@@ -1,0 +1,92 @@
+[
+    {
+        "id": 3798103040,
+        "PN": "3798103040-S",
+        "brand": "Delta",
+        "type": "3xTFF",
+        "model": "CK_3xTFF_48_50",
+        "maxAmp": 160,
+        "price": 1,
+        "description": "CK 3xTFF 48 50 Cable kit for eBC 3xTFF."
+    },
+    {
+        "id": 3798103041,
+        "PN": "3798103041-S",
+        "brand": "Delta",
+        "type": "3xTFF",
+        "model": "CK_3xTFF_48_70",
+        "maxAmp": 200,
+        "price": 1,
+        "description": "CK 3xTFF 48 70 Cable kit for eBC 3xTFF."
+    },
+    {
+        "id": 3798103042,
+        "PN": "3798103042-S",
+        "brand": "Delta",
+        "type": "3xTFF",
+        "model": "CK_3xTFF_48_95",
+        "maxAmp": 300,
+        "price": 1,
+        "description": "CK 3xTFF 48 95 Cable kit for eBC 3xTFF."
+    },
+    {
+        "id": 3798103043,
+        "PN": "3798103043-S",
+        "brand": "Delta",
+        "type": "3xTFF",
+        "model": "CK_3xTFF_48_120",
+        "maxAmp": 1261,
+        "price": 1,
+        "description": "CK 3xTFF 48 120 Cable kit for eBC 3xTFFF."
+    },
+    {
+        "id": 3799477800,
+        "PN": "3799477800-S",
+        "brand": "Delta",
+        "type": "VLH",
+        "model": "CK_VLH_48_35",
+        "maxAmp": 100,
+        "price": 1,
+        "description": "CK VLH (TJH) 48 35 cable kit for eBC VLH (TJH) M8."
+    },
+    {
+        "id": 3799478000,
+        "PN": "3799478000-S",
+        "brand": "Delta",
+        "type": "VLH",
+        "model": "CK_VLH_48_50",
+        "maxAmp": 160,
+        "price": 1,
+        "description": "CK VLH (TJH) 48 50 cable kit for eBC VLH (TJH) M8."
+    },
+    {
+        "id": 3799478100,
+        "PN": "3799478100-S",
+        "brand": "Delta",
+        "type": "VLH",
+        "model": "CK_VLH_48_70",
+        "maxAmp": 200,
+        "price": 1,
+        "description": "CK VLH (TJH) 48 70 cable kit for eBC VLH (TJH) M8."
+    },
+    {
+        "id": 3799478300,
+        "PN": "3799478300-S",
+        "brand": "Delta",
+        "type": "VLH",
+        "model": "CK_VLH_48_95",
+        "maxAmp": 300,
+        "price": 1,
+        "description": "CK VLH (TJH) 48 95 cable kit for eBC VLH (TJH) M8."
+    },
+    {
+        "id": 3798103032,
+        "PN": "3798103032-S",
+        "brand": "Delta",
+        "type": "VLH",
+        "model": "CK_VLH_48_120",
+        "maxAmp": 1261,
+        "price": 1,
+        "description": "CK VLH (TJH) 48 120 cable kit for eBC VLH (TJH) M8."
+    }
+]

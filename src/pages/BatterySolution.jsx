@@ -1,10 +1,22 @@
 import * as React from 'react';
 import './BatterySolution.css'
 import BatterySolutionBlock from '../components/BatterySolutionBlock';
+import BatterySolutionOptBlock from '../components/BatterySolutionOptBlock';
 
-import { FormControl, MenuItem, Select, TextField, Button, FormHelperText } from '@mui/material';
+import { FormControl, MenuItem, Select, TextField, Button, FormHelperText, Modal, Box } from '@mui/material';
 
-function BatterySolution({upsData, batteryData, batterySelectOptions}){
+function BatterySolution({
+  upsData, 
+  pmData, 
+  batteryData, 
+  batterySelectOptions,
+  backupTimeSelectOptions,
+  temperatureSelectOptions,
+  batteryCabinetData,
+  cableKitData,
+  fuseData,
+  junctionBoxData
+}){
     const [selectedUpsData, setSelectedUpsData] = React.useState('');
     const [upsModel, setUpsModel] = React.useState('');
     const [backupTime, setBackupTime] = React.useState(5);
@@ -16,17 +28,37 @@ function BatterySolution({upsData, batteryData, batterySelectOptions}){
     
     const [resultUPS, setResultUPS] = React.useState('');
     const [resultBattery, setResultBattery] = React.useState([]);
+    const [resultBatterySolutions, setResultBatterySolutions] = React.useState([]);
     const [error, setError] = React.useState('');
+    const [info, setInfo] = React.useState('');
 
-    const backupTimes = [5, 10, 15, 20, 30, 45, 60]
-    const temperatures = [20, 25]
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const optimizationPanelStyle = {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      maxWidth: 850,
+      bgcolor: 'background.paper',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
+    };
 
     // Once a UPS model is selected, set UPS data and set default load 
     React.useEffect(()=>{
-      let selectedUpsData = upsData.find((ups) => ups.name === upsModel)
+      const selectedUpsData = upsData.find((ups) => ups.name === upsModel)
       if (selectedUpsData){
         setSelectedUpsData(selectedUpsData)
         setUpsLoad(selectedUpsData.defaultLoad)
+      }
+
+      if(upsModel === 'DPH G2 200'){
+        setInfo('* In 30/32/34 battery configuaraton, UPS output power is de-rated to 80%.');
+      }else{
+        setInfo('');
       }
     }, [upsModel])
 
@@ -50,16 +82,21 @@ function BatterySolution({upsData, batteryData, batterySelectOptions}){
     }, [upsLoad] )
 
     const handleChange_UpsModel = (event) => {
-        setUpsModel(event.target.value);
+      setUpsModel(event.target.value);
+      setResultBattery([]);
     };
     const handleChange_backupTime = (event) => {
       setBackupTime(event.target.value);
+      setResultBattery([]);
     };
     const handleChange_temp = (event) => {
       setTemperature(event.target.value);
+      setResultBattery([]);
+
     };
     const handleChange_batteryType = (event) => {
       setBattery(event.target.value);
+      setResultBattery([]);
     };
     const handleChange_upsLoad = (event) => {
       setUpsLoad(event.target.value.trim());
@@ -77,6 +114,7 @@ function BatterySolution({upsData, batteryData, batterySelectOptions}){
       }else {
         setError('');
         setResultBattery([]);
+        setResultBatterySolutions([]);
 
         // Get UPS data matching selected UPS model
         let ups = upsData.filter(u => u.name === upsModel);
@@ -99,8 +137,13 @@ function BatterySolution({upsData, batteryData, batterySelectOptions}){
         });
     }}
 
+    const onOptimize = (event) => {
+      handleOpen();
+    } 
+
     return (
       <div className='BatterySolution'>
+          {/* Battery solutoin parameter selection panel */}
           <div className='BatterySolution-select'>
             <div className='BatterySolution-select-header'>
               <h>Configuration</h>
@@ -138,7 +181,7 @@ function BatterySolution({upsData, batteryData, batterySelectOptions}){
                   value={backupTime}
                   onChange={handleChange_backupTime}
                 >
-                  {backupTimes.map((backupTime, index) => (
+                  {backupTimeSelectOptions.map((backupTime, index) => (
                     <MenuItem value={backupTime}>{backupTime}</MenuItem>
                   ))}
                 </Select>
@@ -152,7 +195,7 @@ function BatterySolution({upsData, batteryData, batterySelectOptions}){
                   value={temperature}
                   onChange={handleChange_temp}
                 >
-                  {temperatures.map((temp, index) => (
+                  {temperatureSelectOptions.map((temp, index) => (
                     <MenuItem value={temp}>{temp}</MenuItem>
                   ))}
                 </Select>
@@ -185,12 +228,22 @@ function BatterySolution({upsData, batteryData, batterySelectOptions}){
               </FormControl>
               }
             </div>
+
+            {/* Battery solutoin buttons: Show Solution & Optimize */}
+            <div className='BatterySolution-buttons'>
+              <Button className='BatterySolution-button' variant="contained" sx={{ width: 150 }} onClick={onSubmit}>Show Solution</Button>
+              {resultBattery.length === 0?
+                <Button className='BatterySolution-button' variant="contained" sx={{ width: 90 }} style={{marginLeft:'10px'}} disabled>Optimize</Button>:
+                <Button className='BatterySolution-button' variant="contained" sx={{ width: 90 }} style={{marginLeft:'10px'}} onClick={onOptimize}>Optimize</Button>
+              }
+            </div>
           </div>
 
           <div className='BatterySolution-calc'>
             <div className='BatterySolution-calc-header'>
-              <h>Battery Calculation</h>
+              <h>Battery Calculation ({selectedUpsData.name} kVA)</h>
             </div>
+
             <div className='BatterySolution-calc-params'>
               <div>
                 {error !== '' && error.includes('load')? 
@@ -200,27 +253,70 @@ function BatterySolution({upsData, batteryData, batterySelectOptions}){
               </div>
               <p className='BatterySolution-calc-param'> DC Efficieny: {dcEfficiency} % </p>
               <p className='BatterySolution-calc-param'> Load Percentage: {loadPercentage} % </p>
-              <div>
-                <Button variant="contained" onClick={onSubmit} sx={{ width: 205 }}>Show Solution</Button>
-              </div>
             </div>
-            {Array.isArray(resultBattery) && resultBattery.length > 0? 
-            <div className='BatterySolution-result'>
-              {resultBattery.map(battery =>
-                <BatterySolutionBlock
-                  selectedBatteryId={battery}
-                  upsLoad={upsLoad} 
-                  dcEfficiency={dcEfficiency}
-                  temperature={temperature}
-                  backupTime={backupTime}
-                  batteryData={batteryData}
-                  selectedUpsData={resultUPS} 
-              />)}
+
+            {Array.isArray(resultBattery) && resultBattery.length > 0?
+            <div className='BatterySolution-result-container'>
+                <div className='BatterySolution-info'>{info}</div>
+                <div className='BatterySolution-result'>
+                  {resultBattery.map(battery =>
+                  <BatterySolutionBlock
+                    selectedBatteryId={battery}
+                    upsLoad={upsLoad} 
+                    dcEfficiency={dcEfficiency}
+                    temperature={temperature}
+                    backupTime={backupTime}
+                    batteryData={batteryData}
+                    selectedUpsData={resultUPS}
+                    resultBatterySolutions={resultBatterySolutions}
+                    setResultBatterySolutions={setResultBatterySolutions}
+                />)}
+              </div>
             </div>: 
             <div className='BatterySolution-loading'> 
                 Solutions will be shown here. 
             </div>}
           </div>
+
+          {/* Battery solution optimiyational panel */}
+          <Modal
+            className='BatterySolution-optimizationPanel'
+            open={open}
+            onClose={handleClose}
+          >
+            <Box sx={optimizationPanelStyle}>
+              <div className='BatterySolution-optimizationPanel-header'>Optimized Battery Solutions</div>
+              {/* Panel lables */}
+              <BatterySolutionOptBlock />
+              {/* Panel content */}
+              {resultBatterySolutions.length > 0 ? 
+                <div>
+                  {resultBatterySolutions
+                  .sort((a, b) => a.price - b.price) // Sort solutions by price
+                  .map(solution => {
+                    return <BatterySolutionOptBlock
+                      pn = {solution.pn}
+                      model={solution.model}
+                      brand={solution.brand}
+                      price={solution.price}
+                      strings={solution.strings}
+                      blocks={solution.blocks}
+                      imageBatteryPath={solution.image}
+                      upsLoad={upsLoad} 
+                      dcEfficiency={dcEfficiency}
+                      selectedUpsData={selectedUpsData}
+                      pmData={pmData}
+                      batteryData={batteryData}
+                      batteryCabinetData={batteryCabinetData}
+                      cableKitData={cableKitData}
+                      fuseData={fuseData}
+                      junctionBoxData={junctionBoxData}
+                    />
+                  })}
+                </div>:<div>Loading...</div>
+              }
+            </Box>
+          </Modal>
       </div>
     )
 }
