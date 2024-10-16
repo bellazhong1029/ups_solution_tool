@@ -2,7 +2,7 @@ import * as React from 'react';
 import './BatterySolutionOptBlock.css';
 import { ReportGenerator } from '../reports/reportGenerator';
 
-import DescriptionIcon from '@mui/icons-material/Description';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { Packer} from 'docx';
 import { saveAs } from 'file-saver';
 
@@ -32,7 +32,7 @@ function BatterySolutionOptBlock({
     const imageUPSPath = selectedUpsData? selectedUpsData.image:'';
 
     React.useEffect(() => {
-
+        generateItemList();
     }, [])
 
     const generateItemList = () => {
@@ -163,8 +163,6 @@ function BatterySolutionOptBlock({
 
     const handleDownload = async () => {
         try {
-            await generateItemList();
-
             // Create a Word document with text and the image
             const reportGenerator = new ReportGenerator();
             const report = await reportGenerator.create(
@@ -184,29 +182,30 @@ function BatterySolutionOptBlock({
     if (model){
         return (
             <div className='BatterySolutionOptBlock'>
-                <div className='BatterySolutionOptBlock-row'>{model}</div>
-                <div className='BatterySolutionOptBlock-row'>{brand}</div>
-                <div className='BatterySolutionOptBlock-row'>{price}</div>
+                <div className='BatterySolutionOptBlock-row'>{brand} {model}</div>
                 <div className='BatterySolutionOptBlock-row'>{strings}</div>
                 <div className='BatterySolutionOptBlock-row'>{blocks}</div>
                 <div className='BatterySolutionOptBlock-row'>{blocks * strings}</div>
                 <div className='BatterySolutionOptBlock-row'>{voltage}</div>
                 <div className='BatterySolutionOptBlock-row'>{current}</div>
-                <div className='BatterySolutionOptBlock-row' onClick={handleDownload}><DescriptionIcon/></div>
+                <div className='BatterySolutionOptBlock-row'>{price}</div>
+                <div className='BatterySolutionOptBlock-row' onClick={handleDownload}>
+                    <FileDownloadIcon 
+                        sx={{ color: '#1976d2', '&:hover': {boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)'}}}/>
+                </div>
             </div>
         )
     }else{
         return (
             <div className='BatterySolutionOptBlock-labels'>
-                <div className='BatterySolutionOptBlock-row'>Model</div>
-                <div className='BatterySolutionOptBlock-row'>Brand</div>
-                <div className='BatterySolutionOptBlock-row'>Price (€)</div>
+                <div className='BatterySolutionOptBlock-row'>Battery</div>
                 <div className='BatterySolutionOptBlock-row'>Strings</div>
                 <div className='BatterySolutionOptBlock-row'>Blocks</div>
                 <div className='BatterySolutionOptBlock-row'>Totoal Blocks</div>
                 <div className='BatterySolutionOptBlock-row'>Voltage (V)</div>
                 <div className='BatterySolutionOptBlock-row'>Current (A)</div>
-                <div className='BatterySolutionOptBlock-row'>Report</div>
+                <div className='BatterySolutionOptBlock-row'>Price (€)</div>
+                <div className='BatterySolutionOptBlock-row'>Download Report</div>
             </div>
         )
     }

@@ -124,6 +124,7 @@ function BatterySolutionBlock({
                                 label="Options"
                                 value={batteryModel}
                                 onChange={handleChange_batteryModel}
+                                sx={{ color: 'white'}}
                             >
                                 {batteryData.map((battery) => (
                                     <MenuItem key={battery.id} value={battery.model}>{battery.model}</MenuItem>

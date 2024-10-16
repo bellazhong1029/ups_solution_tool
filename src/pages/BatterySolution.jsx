@@ -3,7 +3,8 @@ import './BatterySolution.css'
 import BatterySolutionBlock from '../components/BatterySolutionBlock';
 import BatterySolutionOptBlock from '../components/BatterySolutionOptBlock';
 
-import { FormControl, MenuItem, Select, TextField, Button, FormHelperText, Modal, Box } from '@mui/material';
+import { FormControl, MenuItem, Select, TextField, Button, FormHelperText } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 function BatterySolution({
   upsData, 
@@ -32,20 +33,8 @@ function BatterySolution({
     const [error, setError] = React.useState('');
     const [info, setInfo] = React.useState('');
 
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    const optimizationPanelStyle = {
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      maxWidth: 850,
-      bgcolor: 'background.paper',
-      border: '2px solid #000',
-      boxShadow: 24,
-      p: 4,
-    };
+    const [optimizationPanelOpen, setOptimizationPanelOpen] = React.useState(false);
+    const handleClose = () => setOptimizationPanelOpen(false);
 
     // Once a UPS model is selected, set UPS data and set default load 
     React.useEffect(()=>{
@@ -61,7 +50,6 @@ function BatterySolution({
         setInfo('');
       }
     }, [upsModel])
-
 
     // When UPS load changes, update load percentage and DC efficiency accordingly
     React.useEffect(()=>{
@@ -84,19 +72,26 @@ function BatterySolution({
     const handleChange_UpsModel = (event) => {
       setUpsModel(event.target.value);
       setResultBattery([]);
+      setResultBatterySolutions([]);
+      handleClose();
     };
     const handleChange_backupTime = (event) => {
       setBackupTime(event.target.value);
       setResultBattery([]);
+      setResultBatterySolutions([]);
+      handleClose();
     };
     const handleChange_temp = (event) => {
       setTemperature(event.target.value);
       setResultBattery([]);
-
+      setResultBatterySolutions([]);
+      handleClose();
     };
     const handleChange_batteryType = (event) => {
       setBattery(event.target.value);
       setResultBattery([]);
+      setResultBatterySolutions([]);
+      handleClose();
     };
     const handleChange_upsLoad = (event) => {
       setUpsLoad(event.target.value.trim());
@@ -138,15 +133,22 @@ function BatterySolution({
     }}
 
     const onOptimize = (event) => {
-      handleOpen();
+      setOptimizationPanelOpen(!optimizationPanelOpen);
     } 
 
     return (
-      <div className='BatterySolution'>
-          {/* Battery solutoin parameter selection panel */}
+      <div 
+        className='BatterySolution' 
+        style={{
+          "display":"grid",
+          "gridTemplateColumns": optimizationPanelOpen? "300px minmax(400px, calc(100% - 800px)) 500px": "300px minmax(400px, calc(100% - 300px)) 0px",
+          "transition": "grid-template-columns 0.6s ease"
+        }}
+      >
+          {/* Battery solution parameter selection panel */}
           <div className='BatterySolution-select'>
             <div className='BatterySolution-select-header'>
-              <h>Configuration</h>
+              Configuration
             </div>
             <div className='BatterySolution-selectItem'>
               <p className='title'>UPS Model:</p>
@@ -229,19 +231,25 @@ function BatterySolution({
               }
             </div>
 
-            {/* Battery solutoin buttons: Show Solution & Optimize */}
-            <div className='BatterySolution-buttons'>
-              <Button className='BatterySolution-button' variant="contained" sx={{ width: 150 }} onClick={onSubmit}>Show Solution</Button>
-              {resultBattery.length === 0?
-                <Button className='BatterySolution-button' variant="contained" sx={{ width: 90 }} style={{marginLeft:'10px'}} disabled>Optimize</Button>:
-                <Button className='BatterySolution-button' variant="contained" sx={{ width: 90 }} style={{marginLeft:'10px'}} onClick={onOptimize}>Optimize</Button>
-              }
-            </div>
+            {/* Button: Show Solutions */}   
+            {resultBatterySolutions.length === 0?
+              <Button className='BatterySolution-button' variant="contained" sx={{ width: 250 }} onClick={onSubmit}>Show Solutions</Button>:
+              <Button className='BatterySolution-button' variant="contained" sx={{ width: 250 }} disabled>Show Solutions</Button>
+            }
+
+            {/* Button: View Top Solutions */}   
+            {resultBatterySolutions.length === 0?
+              <Button className='BatterySolution-button' variant="contained" sx={{ width: 250 }} style={{marginTop:'20px'}} disabled>View Top Solutions</Button>:
+              <Button className='BatterySolution-button' variant="contained" sx={{ width: 250 }} style={{marginTop:'20px'}} onClick={onOptimize}>
+                {optimizationPanelOpen? "Hide Top Solutions":"View Top Solutions"}
+              </Button>
+            }        
           </div>
 
+          {/* Battery solutions */}
           <div className='BatterySolution-calc'>
             <div className='BatterySolution-calc-header'>
-              <h>Battery Calculation ({selectedUpsData.name} kVA)</h>
+              Battery Calculation {selectedUpsData.name? '(' + selectedUpsData.name + 'kVA )':''}
             </div>
 
             <div className='BatterySolution-calc-params'>
@@ -259,9 +267,9 @@ function BatterySolution({
             <div className='BatterySolution-result-container'>
                 <div className='BatterySolution-info'>{info}</div>
                 <div className='BatterySolution-result'>
-                  {resultBattery.map(battery =>
+                  {resultBattery.map(batteryId =>
                   <BatterySolutionBlock
-                    selectedBatteryId={battery}
+                    selectedBatteryId={batteryId}
                     upsLoad={upsLoad} 
                     dcEfficiency={dcEfficiency}
                     temperature={temperature}
@@ -278,45 +286,56 @@ function BatterySolution({
             </div>}
           </div>
 
-          {/* Battery solution optimiyational panel */}
-          <Modal
-            className='BatterySolution-optimizationPanel'
-            open={open}
-            onClose={handleClose}
+          {/* Top battery solutions */}
+          <div 
+            className={`BatterySolution-optimizationPanel ${optimizationPanelOpen ? "visible" : ""}`}
           >
-            <Box sx={optimizationPanelStyle}>
-              <div className='BatterySolution-optimizationPanel-header'>Optimized Battery Solutions</div>
-              {/* Panel lables */}
-              <BatterySolutionOptBlock />
-              {/* Panel content */}
-              {resultBatterySolutions.length > 0 ? 
-                <div>
-                  {resultBatterySolutions
-                  .sort((a, b) => a.price - b.price) // Sort solutions by price
-                  .map(solution => {
-                    return <BatterySolutionOptBlock
-                      pn = {solution.pn}
-                      model={solution.model}
-                      brand={solution.brand}
-                      price={solution.price}
-                      strings={solution.strings}
-                      blocks={solution.blocks}
-                      imageBatteryPath={solution.image}
-                      upsLoad={upsLoad} 
-                      dcEfficiency={dcEfficiency}
-                      selectedUpsData={selectedUpsData}
-                      pmData={pmData}
-                      batteryData={batteryData}
-                      batteryCabinetData={batteryCabinetData}
-                      cableKitData={cableKitData}
-                      fuseData={fuseData}
-                      junctionBoxData={junctionBoxData}
-                    />
-                  })}
-                </div>:<div>Loading...</div>
-              }
-            </Box>
-          </Modal>
+            <div className='BatterySolution-optimizationPanel-row'>
+              <div/>
+              <div className='BatterySolution-optimizationPanel-header'>Top Battery Solutions</div>
+              <div onClick={handleClose}>
+                <CloseIcon 
+                  sx={{'&:hover': {backgroundColor: '#dcdcdc', borderRadius: '3px'}}}
+                />
+              </div>
+            </div>
+            <div className='BatterySolution-optimizationPanel-notes'>
+              Please note: <br />
+                1. Battery solutions with more than 8 strings are excluded. <br />
+                2. Solutions are sorted by price, from lowest to highest.
+            </div>
+
+            {/* Panel lables */}
+            <BatterySolutionOptBlock />
+            {/* Panel content */}
+            {resultBatterySolutions.length > 0 ? 
+              <div>
+                {resultBatterySolutions
+                .filter(solution => solution.strings <= 8) // Filter out battery solutions using more than 8 strings
+                .sort((a, b) => a.price - b.price) // Sort solutions by price
+                .map(solution => {
+                  return <BatterySolutionOptBlock
+                    pn = {solution.pn}
+                    model={solution.model}
+                    brand={solution.brand}
+                    price={solution.price}
+                    strings={solution.strings}
+                    blocks={solution.blocks}
+                    imageBatteryPath={solution.image}
+                    upsLoad={upsLoad} 
+                    dcEfficiency={dcEfficiency}
+                    selectedUpsData={selectedUpsData}
+                    pmData={pmData}
+                    batteryData={batteryData}
+                    batteryCabinetData={batteryCabinetData}
+                    cableKitData={cableKitData}
+                    fuseData={fuseData}
+                    junctionBoxData={junctionBoxData}
+                  />
+                })}
+              </div>:<div style={{textAlign:"center"}}> Loading...</div>
+            }
+          </div>
       </div>
     )
 }

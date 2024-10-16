@@ -1,9 +1,6 @@
 .BatterySolution {
   height: calc(100vh - 60px);
-  display: grid;
-  flex-direction: row;
-  grid-template-columns: 300px calc(100% - 300px); /* Left takes 30%, right takes 70% */
-  width: 100%; /* Full width */
+  width: 100%;
 }
 
 /* Battary Configuration */
@@ -88,10 +85,38 @@
 
 
 /* Battery Optimization */
+.BatterySolution-optimizationPanel{
+  padding: 10px 10px;
+  overflow: hidden;
+  transform: translateX(100%); /* Start off-screen to the right */
+  transition: transform 0.5s ease-out; /* Smooth transition */
+  opacity: 0; /* Hidden at first */
+}
+
+.visible{
+  transform: translateX(0); /* Slide into position */
+  opacity: 1; /* Make it fully visible */
+}
+
+.BatterySolution-optimizationPanel-row {
+  display:flex; 
+  flex-Direction:row;
+  align-items: start; 
+  justify-content: space-between;
+
+}
+
 .BatterySolution-optimizationPanel-header {
-  text-align: center;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 600;
+  margin: 20px 10px;
+}
+
+.BatterySolution-optimizationPanel-notes {
+  text-align: left;
+  background-color: #dcdcdc;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 /* Shared styles */

@@ -1,22 +1,26 @@
-.BatterySolutionOptBlock, 
 .BatterySolutionOptBlock-labels {
   display: flex;
   flex-direction: row;
   margin: 15px;
   text-align: center;
-}
-
-.BatterySolutionOptBlock-labels{
   border-bottom: 1px solid #000000;
+  padding-bottom: 10px;
 }
 
-.BatterySolutionOptBlock-row {
-  width: 95px;
-  padding: auto 5px;
+.BatterySolutionOptBlock {
+  display: flex;
+  flex-direction: row;
 }
 
 .BatterySolutionOptBlock:first-child {
   /* Styles for the first item */
   background-color: #f1ef69;
+}
 
+.BatterySolutionOptBlock-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  padding: 3px;
 }
