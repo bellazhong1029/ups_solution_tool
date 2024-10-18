@@ -13,8 +13,7 @@ function App() {
   const [junctionBoxData, setJunctionBoxData] = React.useState([]);
 
 
-  // const batterySelectOptions = ['24-65 Ah', '70-105 Ah', '120-200 Ah', 'Exide','Monbat', 'Leoch', 'Yuasa','CSB Hitachi']
-  const batterySelectOptions = ['24-65 Ah', '70-105 Ah', '120-200 Ah', 'Exide', 'Yuasa','CSB Hitachi']
+  const batterySelectOptions = ['24-65 Ah', '70-105 Ah', '120-200 Ah', 'Exide','Monbat', 'Leoch', 'Yuasa','CSB Hitachi']
   const backupTimeSelectOptions = [5, 10, 15, 20, 30, 45, 60]
   const temperatureSelectOptions = [20, 25]
 
