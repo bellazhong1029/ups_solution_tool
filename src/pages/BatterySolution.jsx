@@ -4,6 +4,7 @@ import BatterySolutionBlock from '../components/BatterySolutionBlock';
 import BatterySolutionOptBlock from '../components/BatterySolutionOptBlock';
 
 import { FormControl, MenuItem, Select, TextField, Button, FormHelperText } from '@mui/material';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import CloseIcon from '@mui/icons-material/Close';
 
 function BatterySolution({
@@ -35,6 +36,8 @@ function BatterySolution({
 
     const [optimizationPanelOpen, setOptimizationPanelOpen] = React.useState(false);
     const handleClose = () => setOptimizationPanelOpen(false);
+
+    const pricelistPath = '/assets/pricelist.xlsx'
 
     // Once a UPS model is selected, set UPS data and set default load 
     React.useEffect(()=>{
@@ -134,7 +137,7 @@ function BatterySolution({
 
     const onOptimize = (event) => {
       setOptimizationPanelOpen(!optimizationPanelOpen);
-    } 
+    }
 
     return (
       <div 
@@ -261,6 +264,12 @@ function BatterySolution({
               </div>
               <p className='BatterySolution-calc-param'> DC Efficieny: {dcEfficiency} % </p>
               <p className='BatterySolution-calc-param'> Load Percentage: {loadPercentage} % </p>
+              <p className='BatterySolution-calc-param'>
+                Download Pricelist
+                <a href={pricelistPath} download="pricelist.xlsx">
+                  <FileDownloadIcon sx={{ color: '#1976d2', marginLeft: '5px', '&:hover': {boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)'}}}/>
+                </a>
+              </p>
             </div>
 
             {Array.isArray(resultBattery) && resultBattery.length > 0?

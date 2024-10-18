@@ -1,9 +1,10 @@
 .Header {
+  width: 100%;
+  background-color: #001F3F;
   display: flex;
   flex-direction: row;
   align-items: start;
   justify-content: space-between;
-  background-color: #001F3F;
 }
 
 .Header img {
