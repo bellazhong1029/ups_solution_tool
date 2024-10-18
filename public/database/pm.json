@@ -2,15 +2,15 @@
     {
         "id": 3915101540, 
         "PN": "3915101540-S",
-        "price": 3697,
+        "price": 4695,
         "description": "DPH 50kW/3U power module",
         "load": 50
     },
     {
         "id": 3915102002, 
         "PN": "3915102002-S",
-        "price": 2000,
-        "description": "DPH 50kW/3U power module",
+        "price": 2200,
+        "description": "DPH 20kW/2U power module",
         "load": 20
     }
 ]

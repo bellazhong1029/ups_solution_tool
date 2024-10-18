@@ -6,7 +6,7 @@
         "type": "3xTFF",
         "model": "CK_3xTFF_48_50",
         "maxAmp": 160,
-        "price": 1,
+        "price": 459.7,
         "description": "CK 3xTFF 48 50 Cable kit for eBC 3xTFF."
     },
     {
@@ -16,7 +16,7 @@
         "type": "3xTFF",
         "model": "CK_3xTFF_48_70",
         "maxAmp": 200,
-        "price": 1,
+        "price": 325.12,
         "description": "CK 3xTFF 48 70 Cable kit for eBC 3xTFF."
     },
     {
@@ -26,7 +26,7 @@
         "type": "3xTFF",
         "model": "CK_3xTFF_48_95",
         "maxAmp": 300,
-        "price": 1,
+        "price": 489.75,
         "description": "CK 3xTFF 48 95 Cable kit for eBC 3xTFF."
     },
     {
@@ -36,7 +36,7 @@
         "type": "3xTFF",
         "model": "CK_3xTFF_48_120",
         "maxAmp": 1261,
-        "price": 1,
+        "price": 1353.81,
         "description": "CK 3xTFF 48 120 Cable kit for eBC 3xTFFF."
     },
     {
@@ -46,7 +46,7 @@
         "type": "VLH",
         "model": "CK_VLH_48_35",
         "maxAmp": 100,
-        "price": 1,
+        "price": 213.22,
         "description": "CK VLH (TJH) 48 35 cable kit for eBC VLH (TJH) M8."
     },
     {
@@ -56,7 +56,7 @@
         "type": "VLH",
         "model": "CK_VLH_48_50",
         "maxAmp": 160,
-        "price": 1,
+        "price": 283.89,
         "description": "CK VLH (TJH) 48 50 cable kit for eBC VLH (TJH) M8."
     },
     {
@@ -66,7 +66,7 @@
         "type": "VLH",
         "model": "CK_VLH_48_70",
         "maxAmp": 200,
-        "price": 1,
+        "price": 378.5,
         "description": "CK VLH (TJH) 48 70 cable kit for eBC VLH (TJH) M8."
     },
     {
@@ -76,7 +76,7 @@
         "type": "VLH",
         "model": "CK_VLH_48_95",
         "maxAmp": 300,
-        "price": 1,
+        "price": 467.71,
         "description": "CK VLH (TJH) 48 95 cable kit for eBC VLH (TJH) M8."
     },
     {
@@ -86,7 +86,7 @@
         "type": "VLH",
         "model": "CK_VLH_48_120",
         "maxAmp": 1261,
-        "price": 1,
+        "price": 992.37,
         "description": "CK VLH (TJH) 48 120 cable kit for eBC VLH (TJH) M8."
     }
 ]

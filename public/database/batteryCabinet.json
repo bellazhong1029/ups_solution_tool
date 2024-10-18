@@ -5,7 +5,7 @@
         "brand": "Delta",
         "type": "3xTFF",
         "model": "3xTFF_NH2",
-        "price": 1,
+        "price": 1761.52,
         "size": "NH2",
         "image": "/assets/battery_cabinet/3xTFF_NH2.jpg",
         "description": "3xTFF battery cabinet with 2xNH02 fuse holders (non stock item check LT)."
@@ -16,7 +16,7 @@
         "brand": "Delta",
         "type": "3xTFF",
         "model": "3xTFF_NH2",
-        "price": 1,
+        "price": 1774.68,
         "size": "NH3",
         "image": "/assets/battery_cabinet/3xTFF_NH3.jpg",
         "description": "3xTFF battery cabinet with 2xNH03 fuse holders (non stock item check LT)."
@@ -27,7 +27,7 @@
         "brand": "Delta",
         "type": "VLH",
         "model": "VLH_NH2",
-        "price": 1,
+        "price": 2779.11,
         "size": "NH2",
         "image": "/assets/battery_cabinet/VLH_BF_NH2.jpg",
         "description": "VLH battery frame with NH2 fuses up to 400A (optional cabinet PN 3798102815)."
@@ -38,7 +38,7 @@
         "brand": "Delta",
         "type": "VLH",
         "model": "VLH_NH3",
-        "price": 1,
+        "price": 2827.6,
         "size": "NH3",
         "image": "/assets/battery_cabinet/VLH_BF_NH3.jpg",
         "description": "VLH battery frame with NH3 fuses up to 630A (optional cabinet PN 3798102817)."

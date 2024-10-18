@@ -3,7 +3,7 @@
         "id": 1,
         "PN":"UPS204DH33A2V35",
         "name": "DPH G2 200",
-        "price": 1,
+        "price": 15706.96,
         "maxLoad": 200,
         "defaultLoad": 200,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -17,7 +17,7 @@
         "id": 5,
         "PN":"UPS304DH33A2035",
         "name": "DPH 300",
-        "price": 1,
+        "price": 17432.82,
         "maxLoad": 300,
         "defaultLoad": 300,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -31,7 +31,7 @@
         "id": 6,
         "PN":"UPS504DH33A1035",
         "name": "DPH 500",
-        "price": 1,
+        "price": 21122.31,
         "maxLoad": 450,
         "defaultLoad": 360,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -45,7 +45,7 @@
         "id": 7,
         "PN":"UPS604DH33A2035",
         "name": "DPH 600",
-        "price": 1,
+        "price": 31527,
         "maxLoad": 600,
         "defaultLoad": 600,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -59,7 +59,7 @@
         "id": 9,
         "PN":"UPS803DH33C2035",
         "name": "DPH 80",
-        "price": 1,
+        "price": 6961.74,
         "maxLoad": 80,
         "defaultLoad": 64,
         "NumofBlocksinOneString": [32, 34, 36, 38, 40, 42, 44, 46],
@@ -73,7 +73,7 @@
         "id": 2,
         "PN":"UPS124DH33C2035",
         "name": "DPH 120",
-        "price": 1,
+        "price": 8501.77,
         "maxLoad": 120,
         "defaultLoad": 96,
         "NumofBlocksinOneString": [32, 34, 36, 38, 40, 42, 44, 46],
@@ -87,7 +87,7 @@
         "id": 10,
         "PN":"UPS304DS3312A35",
         "name": "DPS 300",
-        "price": 1,
+        "price": 33956.04,
         "maxLoad": 300,
         "defaultLoad": 240,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -101,7 +101,7 @@
         "id": 11,
         "PN":"UPS404DS3312A35",
         "name": "DPS 400",
-        "price": 1,
+        "price": 46783.88,
         "maxLoad": 400,
         "defaultLoad": 320,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -110,13 +110,12 @@
         "description": "DPS Series, 3 phase in, 3 phase out, 230V 50 Hz, without battery, parallel function.",
         "modular": false,
         "PM": "N/A"
-
     },
     {
         "id": 12,
         "PN":"UPS504DS3312A35",
         "name": "DPS 500",
-        "price": 1,
+        "price": 61120.88,
         "maxLoad": 500,
         "defaultLoad": 400,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -125,13 +124,12 @@
         "description": "DPS Series, 3 phase in, 3 phase out, 230V 50 Hz, without battery, parallel function.",
         "modular": false,
         "PM": "N/A"
-
     },
     {
         "id": 13,
         "PN":"UPS604DS3312A35",
         "name": "DPS 600",
-        "price": 1,
+        "price": 72439.56,
         "maxLoad": 600,
         "defaultLoad": 480,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -140,13 +138,12 @@
         "description": "DPS Series, 3 phase in, 3 phase out, 230V 50 Hz, without battery, parallel function.",
         "modular": false,
         "PM": "N/A"
-
     },
     {
         "id": 14,
         "PN":"UPS203HH3300035",
         "name": "HPH G2 20",
-        "price": 1,
+        "price": 3758.53,
         "maxLoad": 20,
         "defaultLoad": 20,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -155,13 +152,12 @@
         "description": "HPH Gen.2 20kVA, tower type, 3P4W 400V.",
         "modular": false,
         "PM": "N/A"
-
     },
     {
         "id": 15,
         "PN":"UPS303HH3300035",
         "name": "HPH G2 30",
-        "price": 1,
+        "price": 4563.08,
         "maxLoad": 30,
         "defaultLoad": 30,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -170,13 +166,12 @@
         "description": "HPH Gen.2 30kVA, tower type, 3P4W 400V.",
         "modular": false,
         "PM": "N/A"
-
     },
     {
         "id": 16,
         "PN":"UPS403HH3300035",
         "name": "HPH G2 40",
-        "price": 1,
+        "price": 5076.48,
         "maxLoad": 40,
         "defaultLoad": 40,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -185,58 +180,12 @@
         "description": "HPH Gen.2 40kVA, tower type, 3P4W 400V.",
         "modular": false,
         "PM": "N/A"
-
-    },
-    {
-        "id": 17,
-        "PN":"GES203HH330035",
-        "name": "HPH 20",
-        "price": 1,
-        "maxLoad": 20,
-        "defaultLoad": 16,
-        "NumofBlocksinOneString": [32, 34, 36, 38, 40, 42, 44, 46, 48, 50],
-        "dcEfficiency": [80.5, 86.7, 91.5, 93.33, 93.92, 94.5, 94.78, 95.06, 95.29, 95.48, 95.67],
-        "image": "/assets/ups/HPH20-120.jpg",
-        "description": "HPH Series 20kVA, 3 phase in, 3 phase out, 230V 50 Hz, without battery, parallel function.",
-        "modular": false,
-        "PM": "N/A"
-
-    },
-    {
-        "id": 18,
-        "PN":"GES303HH330035",
-        "name": "HPH 30",
-        "price": 1,
-        "maxLoad": 30,
-        "defaultLoad": 24,
-        "NumofBlocksinOneString": [32, 34, 36, 38, 40, 42, 44, 46, 48, 50],
-        "dcEfficiency": [80.5, 87.7, 92.4, 93.88, 94.47, 95.07, 95.12, 95.17, 95.2, 95.2, 95.2],
-        "image": "/assets/ups/HPH20-120.jpg",
-        "description": "HPH Series 30kVA, 3 phase in, 3 phase out, 230V 50 Hz, without battery, parallel function.",
-        "modular": false,
-        "PM": "N/A"
-
-    },
-    {
-        "id": 19,
-        "PN":"GES403HH330035",
-        "name": "HPH 40",
-        "price": 1,
-        "maxLoad": 40,
-        "defaultLoad": 32,
-        "NumofBlocksinOneString": [32, 34, 36, 38, 40, 42, 44, 46, 48, 50],
-        "dcEfficiency": [76.8, 83.7, 87.5, 89.3, 91.03, 92.76, 93.31, 93.86, 94.3, 94.62, 94.94],
-        "image": "/assets/ups/HPH20-120.jpg",
-        "description": "HPH Series 40kVA, 3 phase in, 3 phase out, 230V 50 Hz, without battery, parallel function.",
-        "modular": false,
-        "PM": "N/A"
-
     },
     {
         "id": 20,
         "PN":"GES603HH330135",
         "name": "HPH 60",
-        "price": 1,
+        "price": 7627.44,
         "maxLoad": 60,
         "defaultLoad": 48,
         "NumofBlocksinOneString": [32, 34, 36, 38, 40, 42, 44, 46],
@@ -245,13 +194,12 @@
         "description": "HPH Series 60kVA, 3 phase in, 3 phase out, 230V 50 Hz, without battery, parallel function.",
         "modular": false,
         "PM": "N/A"
-
     },
     {
         "id": 21,
         "PN":"GES803HH330135",
         "name": "HPH 80",
-        "price": 1,
+        "price": 8762.24,
         "maxLoad": 80,
         "defaultLoad": 64,
         "NumofBlocksinOneString": [32, 34, 36, 38, 40, 42, 44, 46],
@@ -260,13 +208,12 @@
         "description": "HPH Series 80kVA, 3 phase in, 3 phase out, 230V 50 Hz, without battery, parallel function.",
         "modular": false,
         "PM": "N/A"
-
     },
     {
         "id": 22,
         "PN":"GES104HH330135",
         "name": "HPH 100",
-        "price": 1,
+        "price": 13141.73,
         "maxLoad": 100,
         "defaultLoad": 80,
         "NumofBlocksinOneString": [32, 34, 36, 38, 40, 42, 44, 46],
@@ -275,13 +222,12 @@
         "description": "HPH Series 100kVA, 3 phase in, 3 phase out, 230V 50 Hz, without battery, parallel function.",
         "modular": false,
         "PM": "N/A"
-
     },
     {
         "id": 23,
         "PN":"GES124HH330135",
         "name": "HPH 120",
-        "price": 1,
+        "price": 14994.23,
         "maxLoad": 120,
         "defaultLoad": 96,
         "NumofBlocksinOneString": [32, 34, 36, 38, 40, 42, 44, 46],
@@ -290,13 +236,12 @@
         "description": "HPH Series 120kVA, 3 phase in, 3 phase out, 230V 50 Hz, without battery, parallel function.",
         "modular": false,
         "PM": "N/A"
-
     },
     {
         "id": 24,
         "PN":"GES164HH330035",
         "name": "HPH 160",
-        "price": 1,
+        "price": 18905.79,
         "maxLoad": 150,
         "defaultLoad": 150,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -305,13 +250,12 @@
         "description": "HPH Series 160kVA, 3 phase in, 3 phase out, 230V 50 Hz, without battery, parallel function.",
         "modular": false,
         "PM": "N/A"
-
     },
     {
         "id": 25,
         "PN":"GES204HH330035",
         "name": "HPH 200",
-        "price": 1,
+        "price": 20476.04,
         "maxLoad": 200,
         "defaultLoad": 200,
         "NumofBlocksinOneString": [30, 32, 34, 36, 38, 40, 42, 44, 46],
@@ -320,6 +264,5 @@
         "description": "HPH Series 200kVA, 3 phase in, 3 phase out, 230V 50 Hz, without battery, parallel function.",
         "modular": false,
         "PM": "N/A"
-
     }
 ]
